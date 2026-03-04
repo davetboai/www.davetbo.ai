@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --deep-navy: #0a1628;
+  --electric-blue: #0ea5e9;
+  --indigo-accent: #6366f1;
+  --slate-bg: #f1f5f9;
+  --emerald: #10b981;
+  --warm-gray: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--deep-navy);
+  background-color: var(--warm-gray);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-merriweather), 'Merriweather', serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--slate-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--deep-navy);
+  border-radius: 4px;
+}
+
+/* Accent underline */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+}
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--electric-blue), var(--indigo-accent));
+  border-radius: 2px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--electric-blue), var(--indigo-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
