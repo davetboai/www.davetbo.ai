@@ -1,3 +1,5 @@
+"use client";
+
 export default function WritingSection() {
   const articles = [
     {
@@ -7,6 +9,7 @@ export default function WritingSection() {
       url: "https://davetbo.medium.com/graph-rag-part-1-what-is-it-when-you-need-it-how-to-do-it-ea99bc7cfcc9",
       date: "Dec 2024",
       engagement: "13 claps",
+      image: "https://miro.medium.com/v2/resize:fit:720/1*q3_BC4t24aAX9kiuKjQJDg.png",
     },
     {
       title: "Graph RAG Part 2: Multi-Tenancy, Semantic Search, and Multi-Context Retrieval",
@@ -15,6 +18,7 @@ export default function WritingSection() {
       url: "https://davetbo.medium.com/graph-rag-part-2-adding-multi-tenancy-semantic-search-and-multi-context-retrieval-5570c0a2a47e",
       date: "Dec 2024",
       engagement: "28 claps",
+      image: "https://miro.medium.com/v2/resize:fit:720/1*CDKVw2Ovn35ZJLOKbEN2xg.png",
     },
     {
       title: "OCR and Intelligent Document Processing with LLMs",
@@ -23,6 +27,7 @@ export default function WritingSection() {
       url: "https://davetbo.medium.com/ocr-and-intelligent-document-processing-with-llms-bf7b0cc4c7c8",
       date: "Dec 2024",
       engagement: "10 claps",
+      image: "https://miro.medium.com/v2/resize:fit:720/1*jDcv24eVZzgRIH1NJSllcA.png",
     },
   ];
 
@@ -46,39 +51,53 @@ export default function WritingSection() {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-white/[0.04] backdrop-blur-sm rounded-2xl p-7 border border-white/10 hover:border-[#0ea5e9]/40 hover:bg-white/[0.08] transition-all duration-300"
+              className="group block bg-white/[0.04] backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#0ea5e9]/40 hover:bg-white/[0.08] transition-all duration-300"
             >
-              {/* Date & engagement */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs text-gray-500">{article.date}</span>
-                <span className="text-xs text-gray-500">{article.engagement}</span>
+              {/* Article image with gradient fallback */}
+              <div className="w-full h-40 overflow-hidden bg-gradient-to-br from-[#0ea5e9]/20 to-[#6366f1]/20">
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                  }}
+                />
               </div>
 
-              {/* Title */}
-              <h3 className="font-semibold text-white text-lg mb-3 group-hover:text-[#0ea5e9] transition-colors leading-snug">
-                {article.title}
-              </h3>
+              <div className="p-7">
+                {/* Date & engagement */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs text-gray-500">{article.date}</span>
+                  <span className="text-xs text-gray-500">{article.engagement}</span>
+                </div>
 
-              {/* Description */}
-              <p className="text-gray-400 text-sm leading-relaxed mb-5">
-                {article.description}
-              </p>
+                {/* Title */}
+                <h3 className="font-semibold text-white text-lg mb-3 group-hover:text-[#0ea5e9] transition-colors leading-snug">
+                  {article.title}
+                </h3>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {article.tags.map((tag) => (
-                  <span key={tag} className="text-xs bg-white/[0.06] text-gray-300 px-2.5 py-1 rounded-full border border-white/10">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                {/* Description */}
+                <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                  {article.description}
+                </p>
 
-              {/* Read arrow */}
-              <div className="mt-5 flex items-center text-[#0ea5e9] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                Read on Medium
-                <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <span key={tag} className="text-xs bg-white/[0.06] text-gray-300 px-2.5 py-1 rounded-full border border-white/10">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Read arrow */}
+                <div className="mt-5 flex items-center text-[#0ea5e9] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Read on Medium
+                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </div>
             </a>
           ))}

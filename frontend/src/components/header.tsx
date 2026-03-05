@@ -19,13 +19,14 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
-            <span className="text-xl font-bold tracking-tight gradient-text">DT</span>
-            <span className="hidden sm:inline text-lg font-semibold tracking-tight text-white/90">Dave Thibault</span>
+            <img src="/logo.svg" alt="davetbo.ai" className="w-8 h-8" />
+            <span className="text-lg font-semibold tracking-tight text-white/90">davetbo.ai</span>
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 text-sm">
             <a href="#about" className="hover:text-[#0ea5e9] transition-colors">About</a>
+            <a href="#highlights" className="hover:text-[#0ea5e9] transition-colors">Highlights</a>
             <a href="#expertise" className="hover:text-[#0ea5e9] transition-colors">Expertise</a>
             <a href="#writing" className="hover:text-[#0ea5e9] transition-colors">Writing</a>
             <a href="#projects" className="hover:text-[#0ea5e9] transition-colors">Projects</a>
@@ -54,6 +55,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-white/10 pt-4">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-[#0ea5e9] transition-colors">About</a>
+            <a href="#highlights" onClick={() => setMobileMenuOpen(false)} className="block hover:text-[#0ea5e9] transition-colors">Highlights</a>
             <a href="#expertise" onClick={() => setMobileMenuOpen(false)} className="block hover:text-[#0ea5e9] transition-colors">Expertise</a>
             <a href="#writing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-[#0ea5e9] transition-colors">Writing</a>
             <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="block hover:text-[#0ea5e9] transition-colors">Projects</a>

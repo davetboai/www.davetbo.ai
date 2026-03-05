@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather } from "next/font/google";
+import { Plus_Jakarta_Sans, Merriweather } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import DevAuthGate from "@/components/DevAuthGate";
 
-const inter = Inter({ subsets: ["latin"] });
+const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 const merriweather = Merriweather({
   weight: ['300', '400', '700'],
   subsets: ["latin"],
@@ -23,19 +23,29 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Dave Thibault | Sr. Applied AI Architect at AWS",
-    description: "Senior Applied AI Architect at AWS. Building the future of AI-powered applications.",
+    description: "Senior Applied AI Architect at AWS. Building anything we can envision.",
     type: "website",
     locale: "en_US",
     siteName: "davetbo.ai",
+    url: "https://www.davetbo.ai",
+    images: [
+      {
+        url: "https://www.davetbo.ai/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Dave Thibault - Sr. Applied AI Architect at AWS",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dave Thibault | Sr. Applied AI Architect at AWS",
-    description: "Senior Applied AI Architect at AWS. Building the future of AI-powered applications.",
+    description: "Senior Applied AI Architect at AWS. Building anything we can envision.",
+    images: ["https://www.davetbo.ai/og-image.png"],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 
@@ -47,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head />
-      <body className={`${inter.className} ${merriweather.variable}`}>
+      <body className={`${plusJakarta.className} ${merriweather.variable}`}>
         <DevAuthGate>
           <Header />
           {children}

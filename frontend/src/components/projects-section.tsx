@@ -13,57 +13,9 @@ export default function ProjectsSection() {
         </div>
 
         {/* Featured Project */}
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 mb-8">
-          <div className="md:flex">
-            {/* Left side - visual */}
-            <div className="md:w-2/5 bg-gradient-to-br from-[#0a1628] via-[#162033] to-[#1e293b] p-10 flex flex-col justify-center">
-              <div className="space-y-3">
-                {/* Architecture diagram representation */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#0ea5e9]/20 border border-[#0ea5e9]/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[#0ea5e9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-[#0ea5e9]/30 to-transparent" />
-                  <div className="w-10 h-10 rounded-lg bg-[#6366f1]/20 border border-[#6366f1]/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[#6366f1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 ml-6">
-                  <div className="w-10 h-10 rounded-lg bg-[#10b981]/20 border border-[#10b981]/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[#10b981]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-[#10b981]/30 to-transparent" />
-                  <div className="w-10 h-10 rounded-lg bg-amber-400/20 border border-amber-400/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-rose-400/20 border border-rose-400/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                    </svg>
-                  </div>
-                  <div className="h-px flex-1 bg-gradient-to-r from-rose-400/30 to-transparent" />
-                  <div className="w-10 h-10 rounded-lg bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-500 text-xs mt-6 text-center">Multi-tenant architecture</p>
-            </div>
-
-            {/* Right side - details */}
-            <div className="md:w-3/5 p-8 md:p-10">
+        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300 mb-8">
+          <div className="md:flex items-center gap-8">
+            <div className="flex-1">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs bg-[#0ea5e9]/10 text-[#0ea5e9] px-2.5 py-0.5 rounded-full font-medium">AWS Samples</span>
                 <span className="text-xs bg-[#10b981]/10 text-[#10b981] px-2.5 py-0.5 rounded-full font-medium">Open Source</span>
@@ -137,7 +89,7 @@ export default function ProjectsSection() {
                 that collaborate like real employees. Built with AWS CDK, ECS, and the Claude Agent SDK.
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Claude Agents", "AWS CDK", "ECS", "React", "DynamoDB"].map((tech) => (
+                {["Claude Agents", "Bedrock AgentCore", "AWS CDK", "Python", "TS React", "DynamoDB"].map((tech) => (
                   <span key={tech} className="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg">
                     {tech}
                   </span>
@@ -145,17 +97,9 @@ export default function ProjectsSection() {
               </div>
             </div>
             <div className="mt-6 md:mt-0">
-              <a
-                href="https://www.pawm.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-[#0ea5e9] hover:text-[#0284c7] font-medium text-sm transition-colors"
-              >
-                Visit pawm.ai
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
+              <p className="text-gray-400 text-sm italic">
+                Coming soon to an MIT-licensed GitHub repo near you.
+              </p>
             </div>
           </div>
         </div>

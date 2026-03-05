@@ -16,7 +16,6 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   color: var(--deep-navy);
   background-color: var(--warm-gray);
 }

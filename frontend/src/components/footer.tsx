@@ -8,11 +8,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="max-w-sm">
             <div className="flex items-center space-x-2 mb-3">
-              <span className="text-xl font-bold gradient-text">DT</span>
-              <span className="text-lg font-semibold text-white/90">Dave Thibault</span>
+              <img src="/logo.svg" alt="davetbo.ai" className="w-7 h-7" />
+              <span className="text-lg font-semibold text-white/90">davetbo.ai</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Sr. Applied AI Architect at AWS. Building what we can conceive.
+              Sr. Applied AI Architect at AWS.<br />Building anything we can envision.
             </p>
           </div>
 
@@ -22,6 +22,7 @@ export default function Footer() {
               <h3 className="font-semibold mb-3 text-xs tracking-widest uppercase text-gray-500">Navigate</h3>
               <ul className="space-y-2 text-sm">
                 <li><a href="#about" className="text-gray-400 hover:text-[#0ea5e9] transition-colors">About</a></li>
+                <li><a href="#highlights" className="text-gray-400 hover:text-[#0ea5e9] transition-colors">Highlights</a></li>
                 <li><a href="#expertise" className="text-gray-400 hover:text-[#0ea5e9] transition-colors">Expertise</a></li>
                 <li><a href="#writing" className="text-gray-400 hover:text-[#0ea5e9] transition-colors">Writing</a></li>
                 <li><a href="#projects" className="text-gray-400 hover:text-[#0ea5e9] transition-colors">Projects</a></li>
