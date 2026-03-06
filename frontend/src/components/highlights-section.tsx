@@ -43,16 +43,16 @@ export default function HighlightsSection() {
       ),
     },
     {
-      badge: "Technical Writing",
-      title: "Best Practices for Text-to-SQL with LLMs",
+      badge: "Open Source",
+      title: "Multi-Tenant Full-Stack RAG Application",
       description:
-        "A comprehensive guide to getting better results from off-the-shelf LLMs by improving schema context, prompt design, and evaluation strategies.",
-      url: "https://www.linkedin.com/pulse/best-practices-text-to-sql-use-cases-llms-dave-thibault-mr9ac",
-      linkText: "Read on LinkedIn",
+        "Built an open-source multi-tenant RAG stack on AWS featuring document collections before Bedrock Knowledge Bases existed, graph RAG before Bedrock KBs added graph RAG, and multi-tool/multi-context agentic orchestration since 2024.",
+      url: "https://github.com/aws-samples/multi-tenant-full-stack-rag-application-demo",
+      linkText: "View on GitHub",
       gradient: "from-[#6366f1] to-[#8b5cf6]",
       icon: (
         <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
     },
