@@ -1,0 +1,10 @@
+{
+  "app": "python3 app.py",
+  "context": {
+    "stage": "dev",
+    "domain_name": "www-dev.example.com",
+    "hosted_zone_id": "YOUR_HOSTED_ZONE_ID",
+    "hosted_zone_name": "example.com",
+    "certificate_arn": "arn:aws:acm:us-east-1:ACCOUNT_ID:certificate/CERTIFICATE_ID"
+  }
+}

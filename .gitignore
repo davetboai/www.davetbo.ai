@@ -141,7 +141,9 @@ vite.config.ts.timestamp-*
 # CDK
 infra/backend/.venv/
 infra/backend/cdk.out/
+infra/backend/cdk.json
 infra/frontend/cdk.out/
+infra/frontend/cdk.json
 infra/frontend/backend_outputs.json
 *.js.map
 __pycache__/
