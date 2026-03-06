@@ -143,17 +143,41 @@ Empties the S3 bucket and deletes the CloudFormation stack.
 
 ### CDK path (alternative)
 
-If you prefer AWS CDK, the `infra/` directory contains CDK apps for the backend (Cognito auth) and frontend (S3 + CloudFront). See `install_cdk.sh` for usage:
+If you prefer AWS CDK, the `infra/` directory contains CDK apps for the backend (Cognito auth) and frontend (S3 + CloudFront). This path supports **dev** and **prod** environments:
 
 ```bash
 # Copy and configure CDK context
 cp infra/backend/cdk.json.example infra/backend/cdk.json
 cp infra/frontend/cdk.json.example infra/frontend/cdk.json
 # Edit infra/frontend/cdk.json with your domain, hosted zone, and certificate ARN
-
-# Deploy everything
-./install_cdk.sh -a
 ```
+
+**Dev environment** (Cognito auth-protected):
+
+```bash
+# First time: deploy backend (Cognito) + frontend
+./install_cdk.sh -ya
+
+# Subsequent frontend-only deploys
+./install_cdk.sh -yf
+```
+
+The dev environment uses `stage=dev` from `cdk.json`, which enables Cognito authentication via the [AWS Amplify Authenticator](https://ui.docs.amplify.aws/react/connected-components/authenticator). The dev site (e.g. `www-dev.example.com`) is password-protected so you can preview changes before going public.
+
+**Prod environment** (public, no auth):
+
+```bash
+# Override context for prod — pass your prod domain
+cd infra/backend && source .venv/bin/activate && cd ../frontend
+cdk deploy --all --require-approval never \
+  -c stage=prod \
+  -c domain_name=www.example.com \
+  -c hosted_zone_id=YOUR_ZONE_ID \
+  -c hosted_zone_name=example.com \
+  -c certificate_arn=arn:aws:acm:us-east-1:ACCOUNT:certificate/CERT_ID
+```
+
+When `stage=prod`, the auth gate is disabled and the site is publicly accessible.
 
 Requires Python 3.9+, Docker, and the AWS CDK CLI (`npm install -g aws-cdk`).
 
@@ -182,7 +206,7 @@ The site uses:
 
 ### What to remove
 
-- `frontend/src/components/DevAuthGate.tsx` — Cognito-based auth gate for pre-launch previews. Delete it and remove the `<DevAuthGate>` wrapper from `layout.tsx`.
+- `frontend/src/components/DevAuthGate.tsx` — Amplify Authenticator gate for pre-launch previews. Delete it and remove the `<DevAuthGate>` wrapper from `layout.tsx`. You can also remove `aws-amplify` and `@aws-amplify/ui-react` from `package.json`.
 - `infra/` and `install_cdk.sh` — CDK infrastructure (only needed if you prefer CDK over the CloudFormation template)
 
 ---
