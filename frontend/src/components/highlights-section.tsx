@@ -77,52 +77,102 @@ export default function HighlightsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {highlights.map((item) => {
-            const Wrapper = item.url ? "a" : "div";
-            const wrapperProps = item.url
-              ? { href: item.url, target: "_blank" as const, rel: "noopener noreferrer" }
-              : {};
-            return (
-              <Wrapper
-                key={item.title}
-                {...wrapperProps}
-                className="group block bg-white/[0.04] backdrop-blur-sm rounded-2xl p-8 border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300"
-              >
-                {/* Badge */}
-                <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-5 bg-gradient-to-r ${item.gradient} text-white`}>
-                  {item.badge}
-                </span>
-
-                {/* Icon + Title row */}
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} text-white flex items-center justify-center flex-shrink-0`}>
-                    {item.icon}
+        {/* Two World Firsts */}
+        <div className="mb-10">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <h3 className="text-sm font-semibold tracking-widest uppercase text-white/60">Two World Firsts</h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {highlights.slice(0, 2).map((item) => {
+              const Wrapper = item.url ? "a" : "div";
+              const wrapperProps = item.url
+                ? { href: item.url, target: "_blank" as const, rel: "noopener noreferrer" }
+                : {};
+              return (
+                <Wrapper
+                  key={item.title}
+                  {...wrapperProps}
+                  className="group block bg-white/[0.04] backdrop-blur-sm rounded-2xl p-8 border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300"
+                >
+                  <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-5 bg-gradient-to-r ${item.gradient} text-white`}>
+                    {item.badge}
+                  </span>
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} text-white flex items-center justify-center flex-shrink-0`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="font-[family-name:var(--font-merriweather)] text-xl font-bold text-white leading-snug pt-1">
+                      {item.title}
+                    </h3>
                   </div>
-                  <h3 className="font-[family-name:var(--font-merriweather)] text-xl font-bold text-white leading-snug pt-1">
-                    {item.title}
-                  </h3>
-                </div>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                    {item.description}
+                  </p>
+                  {item.linkText && (
+                    <div className="flex items-center text-sm font-medium">
+                      <span className={`bg-gradient-to-r ${item.gradient} bg-clip-text`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        {item.linkText}
+                      </span>
+                      <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  )}
+                </Wrapper>
+              );
+            })}
+          </div>
+        </div>
 
-                {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed mb-5">
-                  {item.description}
-                </p>
-
-                {/* Link */}
-                {item.linkText && (
-                  <div className="flex items-center text-sm font-medium">
-                    <span className={`bg-gradient-to-r ${item.gradient} bg-clip-text`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                      {item.linkText}
-                    </span>
-                    <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+        {/* Thought Leadership & Writing */}
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <h3 className="text-sm font-semibold tracking-widest uppercase text-white/60">Thought Leadership</h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {highlights.slice(2).map((item) => {
+              const Wrapper = item.url ? "a" : "div";
+              const wrapperProps = item.url
+                ? { href: item.url, target: "_blank" as const, rel: "noopener noreferrer" }
+                : {};
+              return (
+                <Wrapper
+                  key={item.title}
+                  {...wrapperProps}
+                  className="group block bg-white/[0.04] backdrop-blur-sm rounded-2xl p-8 border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300"
+                >
+                  <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-5 bg-gradient-to-r ${item.gradient} text-white`}>
+                    {item.badge}
+                  </span>
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} text-white flex items-center justify-center flex-shrink-0`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="font-[family-name:var(--font-merriweather)] text-xl font-bold text-white leading-snug pt-1">
+                      {item.title}
+                    </h3>
                   </div>
-                )}
-              </Wrapper>
-            );
-          })}
+                  <p className="text-gray-400 text-sm leading-relaxed mb-5">
+                    {item.description}
+                  </p>
+                  {item.linkText && (
+                    <div className="flex items-center text-sm font-medium">
+                      <span className={`bg-gradient-to-r ${item.gradient} bg-clip-text`} style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        {item.linkText}
+                      </span>
+                      <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  )}
+                </Wrapper>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
