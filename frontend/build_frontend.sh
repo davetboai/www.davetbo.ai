@@ -12,6 +12,11 @@ cd /tmp/build && \
 echo "removing previous build output" && \
 if [ -d out ]; then rm -Rf out; fi && \
 if [ -d .next ]; then rm -Rf .next; fi && \
+echo "Mapping CDK env vars to NEXT_PUBLIC_ vars" && \
+export NEXT_PUBLIC_AUTH_ENABLED="${AUTH_ENABLED:-false}" && \
+export NEXT_PUBLIC_COGNITO_USER_POOL_ID="${USER_POOL_ID:-}" && \
+export NEXT_PUBLIC_COGNITO_CLIENT_ID="${USER_POOL_CLIENT_ID:-}" && \
+echo "AUTH_ENABLED=$NEXT_PUBLIC_AUTH_ENABLED" && \
 echo "running yarn to install deps" && \
 yarn && \
 echo 'Running build' && \
