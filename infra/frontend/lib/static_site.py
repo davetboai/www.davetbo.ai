@@ -28,6 +28,7 @@ class StaticSitePrivateS3(Construct):
         scope: Construct,
         construct_id: str,
         domain_names: List[str] | None = None,
+        extra_cloudfront_domains: List[str] | None = None,
         hosted_zone_id: str = "",
         hosted_zone_name: str = "",
         certificate_arn: str = "",
@@ -35,6 +36,10 @@ class StaticSitePrivateS3(Construct):
         super().__init__(scope, construct_id)
 
         domain_names = domain_names or []
+        extra_cloudfront_domains = extra_cloudfront_domains or []
+        # All domains go on the CloudFront distribution, but only domain_names
+        # get Route53 records. extra_cloudfront_domains have DNS managed externally.
+        all_cloudfront_domains = domain_names + extra_cloudfront_domains
 
         # S3 bucket for frontend assets
         self.bucket = s3.Bucket(
@@ -75,12 +80,12 @@ class StaticSitePrivateS3(Construct):
             ],
         }
 
-        if domain_names and certificate_arn:
+        if all_cloudfront_domains and certificate_arn:
             certificate = acm.Certificate.from_certificate_arn(
                 self, "Certificate",
                 certificate_arn,
             )
-            distribution_kwargs["domain_names"] = domain_names
+            distribution_kwargs["domain_names"] = all_cloudfront_domains
             distribution_kwargs["certificate"] = certificate
 
         self.distribution = cloudfront.Distribution(

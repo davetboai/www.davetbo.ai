@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Frontend CDK app — reads backend auth outputs (if any) and deploys site."""
-import json
-import os
+"""Frontend CDK app — deploys the static site with optional Cognito auth."""
 import aws_cdk as cdk
+import os
 from lib.site_stack import SiteStack
 
 app = cdk.App()
@@ -15,63 +14,46 @@ env = cdk.Environment(
 stage = app.node.try_get_context("stage") or "dev"
 auth_enabled = stage != "prod"
 
-# Read auth outputs if auth is enabled
-user_pool_id = ""
-user_pool_client_id = ""
-identity_pool_id = ""
+# Auth config — read from context (uses an existing Cognito user pool)
+user_pool_id = app.node.try_get_context("user_pool_id") or ""
+user_pool_client_id = app.node.try_get_context("user_pool_client_id") or ""
 
-if auth_enabled:
-    outputs_file = os.path.join(os.path.dirname(__file__), "backend_outputs.json")
-    if os.path.isfile(outputs_file):
-        with open(outputs_file) as f:
-            all_outputs = json.load(f)
-        for stack_name, outputs in all_outputs.items():
-            if "UserPoolId" in outputs:
-                user_pool_id = outputs["UserPoolId"]
-                user_pool_client_id = outputs["UserPoolClientId"]
-                identity_pool_id = outputs["IdentityPoolId"]
-                break
-        if not user_pool_id:
-            import sys
-            print(
-                "ERROR: Auth is enabled but could not find auth stack outputs "
-                "in backend_outputs.json.\n"
-                "Deploy the backend first: ./install_cdk.sh -i",
-                file=sys.stderr,
-            )
-            sys.exit(1)
-    else:
-        import sys
-        print(
-            f"ERROR: Auth is enabled but {outputs_file} not found.\n"
-            "Deploy the backend first: ./install_cdk.sh -i",
-            file=sys.stderr,
-        )
-        sys.exit(1)
+if auth_enabled and (not user_pool_id or not user_pool_client_id):
+    import sys
+    print(
+        "ERROR: Auth is enabled (stage != 'prod') but user_pool_id or "
+        "user_pool_client_id is missing from cdk.json context.\n"
+        "Add them to infra/frontend/cdk.json or pass via -c flags.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
-# Read frontend-specific context from cdk.json
+# Domain config
+# NOTE: The apex domain (davetbo.ai) DNS records are managed manually outside
+# this stack. Do not create Route53 records for the apex here — they will
+# conflict with the existing manually-created records. The apex is listed in
+# extra_cloudfront_domains so CloudFront accepts traffic for it.
 domain_name = app.node.try_get_context("domain_name") or ""
-apex_domain = app.node.try_get_context("apex_domain") or ""
+extra_cf = app.node.try_get_context("extra_cloudfront_domains") or ""
+extra_cloudfront_domains = [d.strip() for d in extra_cf.split(",") if d.strip()] if extra_cf else []
 hosted_zone_id = app.node.try_get_context("hosted_zone_id") or ""
 hosted_zone_name = app.node.try_get_context("hosted_zone_name") or ""
 certificate_arn = app.node.try_get_context("certificate_arn") or ""
 
-# Build list of domain names (primary first, then apex if specified)
 domain_names = []
 if domain_name:
     domain_names.append(domain_name)
-if apex_domain:
-    domain_names.append(apex_domain)
 
 SiteStack(
     app,
     f"DavetboAi-Site-{stage.upper()}",
     env=env,
+    termination_protection=True,
     auth_enabled=auth_enabled,
     user_pool_id=user_pool_id,
     user_pool_client_id=user_pool_client_id,
-    identity_pool_id=identity_pool_id,
     domain_names=domain_names,
+    extra_cloudfront_domains=extra_cloudfront_domains,
     hosted_zone_id=hosted_zone_id,
     hosted_zone_name=hosted_zone_name,
     certificate_arn=certificate_arn,

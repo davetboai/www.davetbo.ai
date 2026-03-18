@@ -5,7 +5,7 @@ export default function ProjectsSection() {
         <div className="text-center mb-16">
           <p className="text-[#0ea5e9] font-semibold tracking-widest uppercase text-sm mb-4">Projects</p>
           <h2 className="font-[family-name:var(--font-merriweather)] text-3xl md:text-4xl font-bold mb-4">
-            Open Source & Featured Work
+            Featured Work
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
             Building real-world applications that demonstrate production-grade AI patterns.
@@ -73,36 +73,6 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Secondary project - PAWM */}
-        <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300">
-          <div className="md:flex items-center gap-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs bg-[#6366f1]/10 text-[#6366f1] px-2.5 py-0.5 rounded-full font-medium">Side Project</span>
-                <span className="text-xs bg-[#10b981]/10 text-[#10b981] px-2.5 py-0.5 rounded-full font-medium">MIT Licensed</span>
-              </div>
-              <h3 className="font-[family-name:var(--font-merriweather)] text-xl font-bold text-[#0a1628] mb-3">
-                Personal Agentic Workforce Manager (PAWM)
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                An open-source platform for deploying, managing, and scaling autonomous AI agent teams
-                that collaborate like real employees. Built with AWS CDK, ECS, and the Claude Agent SDK.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Claude Agents", "Bedrock AgentCore", "AWS CDK", "Python", "TS React", "DynamoDB"].map((tech) => (
-                  <span key={tech} className="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="mt-6 md:mt-0">
-              <p className="text-gray-400 text-sm italic">
-                Coming soon to an MIT-licensed GitHub repo near you.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

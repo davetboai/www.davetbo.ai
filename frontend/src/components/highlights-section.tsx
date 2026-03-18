@@ -18,7 +18,7 @@ export default function HighlightsSection() {
       badge: "Origin Story",
       title: "The Proof of Concept Behind SAP Joule",
       description:
-        "In spring 2024, was the first to demonstrate that a RAG system could pass an SAP certification test, when SAP engaged AWS AI specialists to prove the concept that would become their Joule Copilot. Used ~900 pages of SAP training docs with Claude 2.1 to bring the score from 38% to 74% (60% passing). SAP later moved Joule\u2019s inference to Amazon Bedrock and Claude Sonnet.",
+        "In spring 2024, was the first to demonstrate that a RAG system could pass an SAP certification test, when SAP engaged AWS and Dave had the opportunity to prove the concept that would become their Joule Copilot. Used ~900 pages of SAP training docs with Claude 2.1 to bring the score from 38% to 74% (60% passing). In 2025 SAP moved Joule\u2019s inference to Amazon Bedrock and Claude Sonnet 4+ with exponential growth following.",
       url: "https://www.linkedin.com/feed/update/urn:li:activity:7420267386966061056/",
       linkText: "Read the story",
       gradient: "from-[#0ea5e9] to-[#0284c7]",

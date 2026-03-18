@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        <script defer src="https://analytics.davetbo.ai/script.js" data-website-id="www-davetbo-ai"></script>
+        <script defer src="https://analytics.davetbo.ai/script.js" data-website-id="www.davetbo.ai"></script>
       </head>
       <body className={`${plusJakarta.className} ${merriweather.variable}`}>
         <DevAuthGate>
